@@ -1,12 +1,12 @@
 package com.ms.practica2.service;
 
-import com.cjava.ribbon.models.Item;
-
+import com.ms.practica2.models.Item;
 import java.util.List;
 
 
 public interface ItemService {
 
-	public List<Item> findAll();
-	public Item findById(Long id, Integer cantidad);
+	 List<Item> findAll();
+	 Item findById(String dni);
+	 Item save(Item item);
 }

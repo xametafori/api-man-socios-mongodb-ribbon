@@ -1,12 +1,9 @@
 package com.ms.practica2.controllers;
 
-import com.cjava.ribbon.models.Item;
-import com.cjava.ribbon.models.service.ItemService;
+import com.ms.practica2.models.Item;
+import com.ms.practica2.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,17 +12,21 @@ import java.util.List;
 public class ItemController {
 	
 	@Autowired
-	@Qualifier("serviceFeign")
 	private ItemService itemService;
 	
-	@GetMapping("/listar")
+	@GetMapping("/socio")
 	public List<Item> listar(){
 		return itemService.findAll();
 	}
 	
-	@GetMapping("/ver/{id}/cantidad/{cantidad}")
-	public Item detalle(@PathVariable Long id, @PathVariable Integer cantidad) {
-		return itemService.findById(id, cantidad);
+	@GetMapping("/socio/{id}")
+	public Item detalle(@PathVariable String dni) {
+		return itemService.findById(dni);
+	}
+	@PostMapping("/socio")
+	public Item grabarPersona(@RequestBody Item item)	{
+		Item oItem=itemService.save(item);
+		return oItem;
 	}
 
 }

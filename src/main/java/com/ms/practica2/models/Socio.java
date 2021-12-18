@@ -15,5 +15,6 @@ public class Socio {
 	private String telefono;
 	private String estado;
 	private String tipoMembresia;
+	private Integer port;
 
 }
