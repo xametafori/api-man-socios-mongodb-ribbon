@@ -1,0 +1,15 @@
+//**Creando network
+
+docker network create javapractica2
+
+
+
+//Ejecutar para docker
+
+.\mvnw clean package -DskipTests
+
+docker build -t api-man-socios-mongodb-ribbon:v1 .
+
+
+
+docker run -p 8002:8002 --name api-man-socios-mongodb-ribbon --network javapractica2 api-man-socios-mongodb-ribbon:v1
