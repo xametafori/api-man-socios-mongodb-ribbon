@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-import java.util.Optional;
-
 
 @RestController
 public class ItemController {
@@ -34,7 +32,7 @@ public class ItemController {
 	}
 
 	@PutMapping("/socio/{dni}")
-	public Item ActualizarSocio(@RequestBody Socio oSocio, @PathVariable String dni)	{
+	public Item actualizarSocio(@RequestBody Socio oSocio, @PathVariable String dni)	{
 		return itemService.update(oSocio,dni);
 	}
 	@DeleteMapping(value = "/socio/{dni}", produces = "application/json; charset=utf-8")
